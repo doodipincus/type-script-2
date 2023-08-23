@@ -99,31 +99,76 @@ function playGame(player1: string, player2: string): string {
     else player2until3++
 
     if (player1until3 >= 3) {
-        player1until3 = 0; 
-        player2until3 = 0; 
+        player1until3 = 0;
+        player2until3 = 0;
         return "player 1"
-    }else if (player2until3 >= 3) {
-        player2until3 = 0; 
-        player1until3 = 0; 
+    } else if (player2until3 >= 3) {
+        player2until3 = 0;
+        player1until3 = 0;
         return "player 2"
-    }else{
+    } else {
         console.log('player 1', player1until3);
         console.log('player 2', player2until3);
-        
+
         return "still nobody"
     }
 }
 
 // for (let i: number = 0; i < 3; i++) {
-    let play = playGame('stone', 'paper');
-    console.log("play", play);
+// let play = playGame('stone', 'paper');
+// console.log("play", play);
 
-    play = playGame('paper', 'paper');
-    console.log("play", play);
+// play = playGame('paper', 'paper');
+// console.log("play", play);
 
-    play = playGame('Scissors', 'paper');
-    console.log("play", play);
+// play = playGame('Scissors', 'paper');
+// console.log("play", play);
 
-    play = playGame('stone', 'paper');
-    console.log("play", play);
+// play = playGame('stone', 'paper');
+// console.log("play", play);
 // }
+
+
+
+////סוף תרגול ב
+
+
+function twoTypes<T, S>(argument1: T, argument2: S): [T, S] {
+    return [argument1, argument2]
+}
+// console.log('l', 0);
+
+
+function valueOfObject<T, S>(object: object, kye: S): T {
+    return object[kye]
+}
+
+const object: Object = { 1: '1', 2: 2 }
+
+// console.log(valueOfObject(object, 2))
+
+function addObject<T extends Record<string, any>>(arr: T[], object: T): T[] {
+    arr.forEach(item => {
+        item = Object.assign(item, object)
+    })
+    return arr
+}
+
+
+interface AdditionalProperties {
+    newProperty: string;
+    anotherProperty: number;
+}
+
+const originalArray: Record<string, any>[] = [
+    { name: "John", age: 25 },
+    { name: "Alice", age: 30 },
+];
+
+
+const propertiesToAdd: AdditionalProperties = {
+    newProperty: "Hello",
+    anotherProperty: 42,
+};
+
+console.log(addObject(originalArray, propertiesToAdd))
